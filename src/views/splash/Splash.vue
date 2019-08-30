@@ -1,73 +1,149 @@
 <template>
-    <div class="splash">
-        <swiper :options="swiperOption" ref="mySwiper">
-            <swiper-slide>
-                <div class="splash-title">卷&nbsp;&nbsp;轴</div>
-                <button @click="handleClick">立即体验</button>
-            </swiper-slide>
-        </swiper>
-    </div>
+  <div class="splash">
+    <swiper :options="swiperOption" ref="mySwiper">
+      <swiper-slide v-for="(imgUrl,i) in imgUrls" :key="imgUrl.id">
+        <img :src="imgUrl.wUrl" />
+        <div class="num">{{count}}秒后跳转</div>
+        <div class="box1" v-if="i === 0">
+          <p>在这里</p>
+          <p>TA会在<span>下一秒</span>遇见你</p>
+        </div>
+        <div class="box1" v-if="i === 1">
+          <p>在这里</p>
+          <p>你可以听到周围人的<span>心声</span></p>
+        </div>
+        <button @click="handleClick" v-if="i === 2">立即体验</button>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+  </div>
 </template>
 
 <script>
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
+import "swiper/dist/css/swiper.css";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import request from "utils/request.js";
+import { mapGetters } from "vuex";
+
 export default {
-    data(){
-        return{
-            swiperOption: {
-                pagination: {
-                    el: '.swiper-pagination'
-                }
-            }
+  data() {
+    return {
+      count: "", //倒计时
+      imgUrls: [
+        {
+          wUrl: require("../../../src/assets/w1.png")
+        },
+        {
+          wUrl: require("../../../src/assets/w2.png")
+        },
+        {
+          wUrl: require("../../../src/assets/w3.png")
         }
+      ],
+      swiperOption: {
+        pagination: {
+          el: ".swiper-pagination"
+        }
+      }
+    };
+  },
+  components: {
+    swiper,
+    swiperSlide
+  },
+  mounted () {
+    this.threeGo()
+  },
+  methods: {
+    handleClick() {
+      this.$router.replace("/home");
     },
-    components: {
-        swiper,
-        swiperSlide
-    },
-    methods: {
-        handleClick() {
-        this.$router.replace('/home')
+    threeGo() {
+      const TIME_COUNT = 3;
+      if (!this.timer) {
+        this.count = TIME_COUNT;
+        this.show = false;
+        this.timer = setInterval(() => {
+          if (this.count > 0 && this.count <= TIME_COUNT) {
+            this.count--;
+          } else {
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+            this.$router.push({
+              path: "/home"
+            });
+          }
+        }, 1000);
+      }
     }
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>
-div.splash
-  height 100%
-  background-color #FEE140
-  background-image linear-gradient(90deg, #FEE140 0%, #FA709A 100%)
+div.splash {
+  height: 100%;
+  .swiper-container {
+    height: 100%;
+    .swiper-wrapper {
+      height: 100%;
+      .swiper-slide {
+        position: relative;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+        .num{
+          position: absolute;
+          right:3%;
+          top:2%;
+          background:black;
+          opacity:0.5;
+          padding:.1rem .2rem;
+          border-radius:.2rem;
+          color:white
+        }
+        .box1 {
+          position: absolute;
+          left: 50%;
+          top: 72%;
+          transform: translate(-50%, 0);
+          font-size: 0.18rem;
+          color: white;
+          width: 100%;
+          p {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            span {
+              font-size: 0.24rem;
+            }
+          }
+        }
+        button {
+          position: absolute;
+          left: 50%;
+          top: 72%;
+          transform: translate(-50%, 0);
+          width: 1.8rem;
+          height: 0.55rem;
+          font-size: 0.18rem;
+          border-radius: 0.1rem;
+          border: none;
+          background: white;
+        }
+      }
+    }
+  }
+}
 
-  .swiper-container
-    height 100%
-    .swiper-wrapper
-      height 100%
-      .swiper-slide
-        position relative
-        .splash-title
-          position absolute
-          left 50%
-          top 35%
-          text-align center
-          line-height .55rem
-          transform translate(-50%, 0)
-          width 1.8rem
-          height .55rem
-          font-size .30rem
-          color #fff
-          border none
-        button
-          position absolute
-          left 50%
-          top 55%
-          transform translate(-50%, 0)
-          width 1.8rem
-          height .55rem
-          font-size .18rem
-          border-radius .1rem
-          color #fff
-          background rgba(0, 0, 0, 0.2)
-          border none
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+}
 </style>
+
