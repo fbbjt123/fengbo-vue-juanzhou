@@ -7,6 +7,7 @@
         <van-col>
           <router-link class="v-child-2" to='/home/shop' tag='div'>在店铺内搜索</router-link>
         </van-col>
+        1
       </van-row>
   </div>
 </template>
