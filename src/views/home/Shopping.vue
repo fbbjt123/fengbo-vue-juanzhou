@@ -2,9 +2,9 @@
   <!-- 首页内容 -->
   <div class="layout-container">
     <Header></Header>
-    <section>
+    <!-- <section>
       <Search></Search>
-    </section>
+    </section> -->
     <main>
       <Homepage></Homepage>
     </main>
@@ -14,7 +14,6 @@
 
 <script>
 import Header from '@/components/shoplist/Header'
-import Search from '@/components/shoplist/Search'
 import Homepage from '@/components/shoplist/Homepage'
 import Tabbar from '@/components/layout/Tabbar'
 
@@ -22,7 +21,6 @@ import Tabbar from '@/components/layout/Tabbar'
 export default {
   components:{
     Header,
-    Search,
     Homepage,
     Tabbar
   }

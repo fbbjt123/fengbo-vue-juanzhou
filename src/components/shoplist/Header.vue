@@ -1,63 +1,48 @@
 <template>
   <div class="header-container">
-    <ul>
-      <router-link class="li1" to='/home/list' tag="li">
-        <svg
-          class="icon"
-          width="25px"
-          height="25.00px"
-          viewBox="0 0 1024 1024"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill="#FFF"
-            d="M46.545455 134.981818h148.945454v69.818182H46.545455zM316.509091 134.981818H977.454545v69.818182H316.509091zM46.545455 479.418182h148.945454v69.818182H46.545455zM316.509091 479.418182H977.454545v69.818182H316.509091zM46.545455 819.2h148.945454v69.818182H46.545455zM316.509091 819.2H977.454545v69.818182H316.509091z"
-          ></path>
-        </svg>
-      </router-link>
-      
-      <li class="li2">卷皮</li>
-      <router-link class="li3" to="/home/login" tag="li">登录</router-link>
-    </ul>
+      <van-row type="flex" justify="space-around">
+        <van-col>
+          <router-link class="v-child-1" to='/home/list' tag="div">分类</router-link>
+        </van-col>
+        <van-col>
+          <router-link class="v-child-2" to='/home/shop' tag='div'>在店铺内搜索</router-link>
+        </van-col>
+      </van-row>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
-    return{
-      items:JSON.parse(localStorage.getItem("userInfo"))
-    }
-  }
+  
 }
 </script>
 
-
-<style lang="stylus" scoped>
-.header-container 
-  width 100%
-  height 0.5rem
-  background linear-gradient(150deg,#ff5a61 50%,#fd631c)
-  display flex
-
-ul
- width 100%
- height 100%
- display flex
-
-li 
-  height  100%
-  display  flex
-  flex-direction  column
-  justify-content  center
-  align-items  center
-  color white
-.li1,.li3
-  flex 0.5
-.li2
-  flex 2
-  font-size .20rem
-.li3
-  font-size .16rem
+<style>
+.header-container{
+  width:100%;
+  height:0.5rem;
+  background:linear-gradient(150deg,#ff5a61 50%,#fd631c)
+}
+.van-row--justify-space-around{
+  width: 100%;
+  height: 100%
+}
+.van-col{
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+.v-child-1,.v-child-2{
+  font-size:.16rem;
+  color:white;
+}
+.v-child-1{
+  padding-left: 0.08rem;
+}
+.v-child-2{
+  padding:.05rem 1rem;
+  background: white;
+  border-radius: .25rem;
+  color:rgba(0, 0, 0, 0.4)
+}
 </style>
