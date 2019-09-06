@@ -1,10 +1,6 @@
 <template>
-  <!-- 首页内容 -->
   <div class="layout-container">
     <Header></Header>
-    <!-- <section>
-      <Search></Search>
-    </section> -->
     <main>
       <Homepage></Homepage>
     </main>
@@ -16,8 +12,6 @@
 import Header from '@/components/shoplist/Header'
 import Homepage from '@/components/shoplist/Homepage'
 import Tabbar from '@/components/layout/Tabbar'
-
-
 export default {
   components:{
     Header,
@@ -26,7 +20,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="stylus" scoped>
 @import '~assets/border.styl'

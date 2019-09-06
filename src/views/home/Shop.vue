@@ -1,6 +1,12 @@
 <template>
     <div class="cart-container">
-      <input type="text" class="search" placeholder="搜索商品"  v-model="title"/>
+      <form action="/">
+        <van-search
+          v-model="title"
+          placeholder="请输入搜索关键词"
+          show-action
+        />
+      </form>
       <div id="cart-row">
         <div class="cart-div" v-for="item in filteredBlogs" :key="item.goods_id">
           <router-link
@@ -29,13 +35,11 @@
           </router-link>
         </div>
       </div>
-      <Tabbar></Tabbar>
     </div>
 </template>
 
 <script>
-import request from 'utils/request' 
-import Tabbar from '@/components/layout/Tabbar'
+import request from 'utils/request'
 import $http from 'axios'
 
 const delay = (function() {
@@ -48,9 +52,6 @@ const delay = (function() {
 
 export default {
   name: 'search',
-  components:{
-    Tabbar
-  },
   data() {
     return {
       title: '',

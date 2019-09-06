@@ -1,22 +1,11 @@
 <template>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a href="#">
-                    <img src="//gw.alicdn.com/tfs/TB1O6iZMVzqK1RjSZFvXXcB7VXa-1035-390.jpg_790x10000Q75.jpg_.webp" alt="">
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="#">
-                    <img src="//gw.alicdn.com/imgextra/i3/181/O1CN01KLOldX1DCwC7KnZKO_!!181-0-lubanu.jpg_790x10000Q75.jpg_.webp" alt="">
-                </a>
-            </div>
-            <div class="swiper-slide" style="background:yellow">
-                <a href="#">
-                    <img src="//gw.alicdn.com/imgextra/i2/85/O1CN01AU3xQu1CUyAp3FpPC_!!85-0-lubanu.jpg_790x10000Q75.jpg_.webp" alt="">
-                </a>
+            <div class="swiper-slide" v-for="swiperImage in swiperImages" :key="swiperImage.id">
+                <img :src="swiperImage.src" alt=""/>
             </div>
         </div>
+        <div class="swiper-pagination"></div>
     </div>
 </template>
 
@@ -24,27 +13,46 @@
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.min.css'
 export default {
+    data(){
+        return{
+            swiperImages: [
+                {src:"https://goods3.juancdn.com/jas/190830/4/d/5d68f37033b0896c727b6656_1080x418.jpg"},
+                {src:"https://goods4.juancdn.com/jas/190829/7/1/5d6743a433b08911dd6d400c_1080x418.jpg"},
+                {src:"https://goods6.juancdn.com/jas/190829/a/f/5d67420a33b0897e6b6bbb2c_1080x418.jpg"}
+            ],
+        }
+    },
     mounted(){
         var mySwiper = new Swiper('.swiper-container', {
           autoplay:true,
           loop:true,
-          cancelable:false
+          cancelable:false,
+          pagination: {
+            el: '.swiper-pagination',
+          },
         })
-    }
+    },
 }
 </script>
 
-<style lang="stylus" scoped>
-.swiper-container
+<style lang="stylus">
+.swiper-container{
     width 100%
     height 100%
-.swiper-wrapper
-    width 100%
-    height 100%
-.swiper-wrapper
-    width 100%
-    height 100%
-.swiper-slide img 
-    width 100%
-    height 100%
+    .swiper-wrapper{
+        width 100%
+        height 100%
+        .swiper-slide{
+            width 100%
+            height 100%
+            img{
+                width 100%
+                height 100%
+            }
+        }
+    }
+    .swiper-pagination-bullet-active{
+        background #ff464e
+    } 
+} 
 </style>

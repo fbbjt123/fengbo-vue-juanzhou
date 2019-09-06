@@ -2,7 +2,7 @@
   <div class="splash">
     <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide v-for="(imgUrl,i) in imgUrls" :key="imgUrl.id">
-        <img :src="imgUrl.wUrl" />
+        <img :src="imgUrl.wUrl" alt="" />
         <div class="num">{{count}}秒后跳转</div>
         <div class="box1" v-if="i === 0">
           <p>在这里</p>
@@ -30,15 +30,9 @@ export default {
     return {
       count: "", //倒计时
       imgUrls: [
-        {
-          wUrl: require("../../../src/assets/w1.png")
-        },
-        {
-          wUrl: require("../../../src/assets/w2.png")
-        },
-        {
-          wUrl: require("../../../src/assets/w3.png")
-        }
+        {wUrl: require("../../../src/assets/splashimg/w1.png")},
+        {wUrl: require("../../../src/assets/splashimg/w2.png")},
+        {wUrl: require("../../../src/assets/splashimg/w3.png")}
       ],
       swiperOption: {
         pagination: {

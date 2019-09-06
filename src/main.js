@@ -8,7 +8,7 @@ import VueResource from 'vue-resource'
 import ElementUI from 'element-ui'
 import Vuex from 'vuex'
 import Vant from 'vant'
-
+import Waterfall from '@vant/waterfall';
 
 
 import './assets/reset.styl'
@@ -18,8 +18,6 @@ import 'vue-lazyload/vue-lazyload.js'
 import 'vant/lib/index.css'
 
 
-
-
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyload)
@@ -27,6 +25,7 @@ Vue.use(VueResource)
 Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.use(Vant)
+Vue.use(Waterfall);
 
 new Vue({
   router,

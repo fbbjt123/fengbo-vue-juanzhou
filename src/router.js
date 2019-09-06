@@ -82,7 +82,7 @@ export default new Router({
           component:Register
         },
         {
-          path:'details/:goodId/:titleLong/:picUrl/:cprice/:zgCatThreeid/:couponTips',
+          path:'details?:goodId',
           name:'details',
           component:Details
         },
