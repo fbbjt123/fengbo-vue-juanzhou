@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@vant/waterfall": "^1.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-plugin-import": "^1.12.0",
     "better-scroll": "^1.15.1",
     "element-ui": "^2.7.0",
